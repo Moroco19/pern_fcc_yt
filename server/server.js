@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
-
+const db = require("./db");
 
 const app = express();
 
@@ -10,6 +10,9 @@ app.use(morgan("dev"));
 
 //Get All Restaurants
 app.get("/api/v1/restaurants", async (req, res) => {
+    const results = await db.query("SELECT * FROM restaurants")
+    console.log(results);
+
     res.status(200).json({
         status: "success",
         data: {
