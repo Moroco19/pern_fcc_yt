@@ -13,7 +13,7 @@ app.use(morgan("dev"));
 //Get All Restaurants
 app.get("/api/v1/restaurants", async (req, res) => {
     try {
-        const results = await db.query("SELECT * FROM restaurants");
+        const results = await db.query("SELECT * FROM restaurants ORDER BY id ASC");
         //console.log(results);
         res.status(200).json({
             status: "success",
